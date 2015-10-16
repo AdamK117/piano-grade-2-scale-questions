@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+    
+    </style>
+  </head>
+  <body>
+    <div id="header">
+    </div>
+    <div id="left-hand">
+    </div>
+    <div id="chord">
+    </div>
+    <div id="right-hand">
+    </div>
+  </body>
+</html>

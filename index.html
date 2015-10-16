@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+    var chords = [
+      "lh A Major",
+      "rh A Major",
+      "bh A Major",
+      "lh E Major",
+      "rh E Major",
+      "bh E Major",
+      "lh B Major",
+      "rh B Major",
+      "bh B Major",
+      "lh Bb Major",
+      "rh Bb Major",
+      "bh Bb Major",
+      "lh Eb Major",
+      "rh Eb Major",
+      "bh Eb Major",
+      "lh Bm Major",
+      "rh Bm Major",
+      "bh Bm Major",
+      "lh Gm Major",
+      "rh Gm Major",
+      "bh Gm Major",
+      "lh Cm Major",
+      "rh Cm Major",
+      "bh Cm Major",
+      "bh A Contrymotion",
+      "bh Ab Contrymotion",
+      "lh Ab Chromatic(CS)",
+      "rh Ab Chromatic(CS)",
+      "lh C Chromatic(CS)",
+      "rh C Chromatic(CS)",
+      "bh A Alpegio(ARP)",
+      "bh Gm Alpegio(ARP)",
+      "lh Cm Alpegio(ARP)",
+      "rh Cm Alpegio(ARP)",
+      "lh E Alpegio(ARP)",
+      "rh E Alpegio(ARP)",
+      "lh Eb Alpegio(ARP)",
+      "rh Eb Alpegio(ARP)",
+      "lh B Alpegio(ARP)",
+      "rh B Alpegio(ARP)",
+      "lh Bm Alpegio(ARP)",
+      "rh Bm Alpegio(ARP)",
+      "lh Bb Alpegio(ARP)",
+      "rh Bb Alpegio(ARP)"
+    ];
+
+    var lexedChords = chords.map(function (combination) {
+      var entries = combination.split(" ");
+
+      var hand = entries[0];
+      var chord = entries[1];
+      var type = entries[2];
+
+      return { hand: hand, chord: chord, type: type };
+    });
+
+    window.addEventListener("load", function (e) {
+      var d = document;
+      var headerEl = d.getElementById("header");
+      var leftEl = d.getElementById("left-hand");
+      var chordEl = d.getElementById("chord");
+      var rightEl = d.getElementById("right-hand");
+
+      function showCombo (lexedChord) {
+	var idx = Math.floor(Math.random() * lexedChords.length);
+	var lexedChord = lexedChords[idx];
+	headerEl.innerHTML = lexedChord.type;
+	chordEl.innerHTML = lexedChord.chord;
+
+	switch (lexedChord.hand) {
+	  case "lh":
+	    leftEl.style.visibility = "visible";
+	    rightEl.style.visibility = "hidden";
+	    break;
+	  case "rh":
+	    rightEl.style.visibility = "visibile";
+	    leftEl.style.visibility = "hidden";
+	    break;
+	  case "bh":
+	    rightEl.style.visibility = "visibile";
+	    leftEl.style.visibility = "visibile";
+	    break;
+	}
+      }
+
+      showCombo();
+
+      document.body.addEventListener("click", function (e) {
+	showCombo();
+      }, false);
+    }, false);
+    </script>
+    <style>
+    #header, #left-hand, #chord, #right-hand {
+	    font-size: 100px;
+	    text-align: center;
+	    display: inline-block;
+	    vertical-align: middle;
+	    margin: 0;
+    }
+
+    #header {
+	    width: 100%;
+    }
+
+    #left-hand, #chord, #right-hand {
+	    width: 33%;
+    }
+
+    #wrapper {
+	    width: 99%;
+	    display: inline-block;
+	    vertical-align: middle;
+    }
+
+    body:before {
+	    content: "";
+	    display: inline-block;
+	    width: 0;
+	    height: 100%;
+	    vertical-align: middle;
+    }
+
+    html, body {
+	    margin: 0;
+	    width: 100%;
+	    height: 100%;
+	    cursor: pointer;
+	    cursor: hand;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+    <div id="header">
+    </div>
+    <div id="left-hand">
+      lh
+    </div>
+    <div id="chord">
+    </div>
+    <div id="right-hand">
+      rh
+    </div>
+    </div>
+  </body>
+</html>
